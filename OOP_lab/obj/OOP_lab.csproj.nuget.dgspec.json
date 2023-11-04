@@ -1,0 +1,298 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/dmitriy/RiderProjects/OOP_Lab/OOP_lab/OOP_lab.csproj": {}
+  },
+  "projects": {
+    "/home/dmitriy/RiderProjects/OOP_Lab/DataAccess/DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/dmitriy/RiderProjects/OOP_Lab/DataAccess/DataAccess.csproj",
+        "projectName": "DataAccess",
+        "projectPath": "/home/dmitriy/RiderProjects/OOP_Lab/DataAccess/DataAccess.csproj",
+        "packagesPath": "/home/dmitriy/.nuget/packages/",
+        "outputPath": "/home/dmitriy/RiderProjects/OOP_Lab/DataAccess/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/dmitriy/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/home/dmitriy/RiderProjects/OOP_Lab/Models/Models.csproj": {
+                "projectPath": "/home/dmitriy/RiderProjects/OOP_Lab/Models/Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.13, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/7.0.111/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/dmitriy/RiderProjects/OOP_Lab/Models/Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/dmitriy/RiderProjects/OOP_Lab/Models/Models.csproj",
+        "projectName": "Models",
+        "projectPath": "/home/dmitriy/RiderProjects/OOP_Lab/Models/Models.csproj",
+        "packagesPath": "/home/dmitriy/.nuget/packages/",
+        "outputPath": "/home/dmitriy/RiderProjects/OOP_Lab/Models/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/dmitriy/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/7.0.111/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/dmitriy/RiderProjects/OOP_Lab/OOP_lab/OOP_lab.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/dmitriy/RiderProjects/OOP_Lab/OOP_lab/OOP_lab.csproj",
+        "projectName": "OOP_lab",
+        "projectPath": "/home/dmitriy/RiderProjects/OOP_Lab/OOP_lab/OOP_lab.csproj",
+        "packagesPath": "/home/dmitriy/.nuget/packages/",
+        "outputPath": "/home/dmitriy/RiderProjects/OOP_Lab/OOP_lab/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/dmitriy/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/home/dmitriy/RiderProjects/OOP_Lab/DataAccess/DataAccess.csproj": {
+                "projectPath": "/home/dmitriy/RiderProjects/OOP_Lab/DataAccess/DataAccess.csproj"
+              },
+              "/home/dmitriy/RiderProjects/OOP_Lab/Models/Models.csproj": {
+                "projectPath": "/home/dmitriy/RiderProjects/OOP_Lab/Models/Models.csproj"
+              },
+              "/home/dmitriy/RiderProjects/OOP_Lab/Services/Services.csproj": {
+                "projectPath": "/home/dmitriy/RiderProjects/OOP_Lab/Services/Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[8.0.0-rc.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/7.0.111/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/dmitriy/RiderProjects/OOP_Lab/Services/Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/dmitriy/RiderProjects/OOP_Lab/Services/Services.csproj",
+        "projectName": "Services",
+        "projectPath": "/home/dmitriy/RiderProjects/OOP_Lab/Services/Services.csproj",
+        "packagesPath": "/home/dmitriy/.nuget/packages/",
+        "outputPath": "/home/dmitriy/RiderProjects/OOP_Lab/Services/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/dmitriy/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/home/dmitriy/RiderProjects/OOP_Lab/DataAccess/DataAccess.csproj": {
+                "projectPath": "/home/dmitriy/RiderProjects/OOP_Lab/DataAccess/DataAccess.csproj"
+              },
+              "/home/dmitriy/RiderProjects/OOP_Lab/Models/Models.csproj": {
+                "projectPath": "/home/dmitriy/RiderProjects/OOP_Lab/Models/Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/7.0.111/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

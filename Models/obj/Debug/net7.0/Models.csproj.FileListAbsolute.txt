@@ -1,0 +1,14 @@
+/home/dmitriy/RiderProjects/OOP_Lab/Models/bin/Debug/net7.0/Models.deps.json
+/home/dmitriy/RiderProjects/OOP_Lab/Models/bin/Debug/net7.0/Models.runtimeconfig.json
+/home/dmitriy/RiderProjects/OOP_Lab/Models/bin/Debug/net7.0/Models.dll
+/home/dmitriy/RiderProjects/OOP_Lab/Models/bin/Debug/net7.0/Models.pdb
+/home/dmitriy/RiderProjects/OOP_Lab/Models/obj/Debug/net7.0/Models.csproj.AssemblyReference.cache
+/home/dmitriy/RiderProjects/OOP_Lab/Models/obj/Debug/net7.0/Models.GeneratedMSBuildEditorConfig.editorconfig
+/home/dmitriy/RiderProjects/OOP_Lab/Models/obj/Debug/net7.0/Models.AssemblyInfoInputs.cache
+/home/dmitriy/RiderProjects/OOP_Lab/Models/obj/Debug/net7.0/Models.AssemblyInfo.cs
+/home/dmitriy/RiderProjects/OOP_Lab/Models/obj/Debug/net7.0/Models.csproj.CoreCompileInputs.cache
+/home/dmitriy/RiderProjects/OOP_Lab/Models/obj/Debug/net7.0/Models.dll
+/home/dmitriy/RiderProjects/OOP_Lab/Models/obj/Debug/net7.0/refint/Models.dll
+/home/dmitriy/RiderProjects/OOP_Lab/Models/obj/Debug/net7.0/Models.pdb
+/home/dmitriy/RiderProjects/OOP_Lab/Models/obj/Debug/net7.0/Models.genruntimeconfig.cache
+/home/dmitriy/RiderProjects/OOP_Lab/Models/obj/Debug/net7.0/ref/Models.dll
