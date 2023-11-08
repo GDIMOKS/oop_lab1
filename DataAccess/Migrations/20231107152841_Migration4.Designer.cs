@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DataAccess.Migrations
 {
-    [DbContext(typeof(SongsDbContext))]
+    [DbContext(typeof(AudioserviceDbContext))]
     [Migration("20231107152841_Migration4")]
     partial class Migration4
     {

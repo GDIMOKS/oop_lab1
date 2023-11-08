@@ -3,13 +3,13 @@ using Models;
 
 namespace DataAccess
 {
-    public class SongsDbContext : DbContext
+    public class AudioserviceDbContext : DbContext
     {
-        public SongsDbContext()
+        public AudioserviceDbContext()
         {
             
         }
-        public SongsDbContext(DbContextOptions<SongsDbContext> options) : base(options)
+        public AudioserviceDbContext(DbContextOptions<AudioserviceDbContext> options) : base(options)
         {
             
         }
