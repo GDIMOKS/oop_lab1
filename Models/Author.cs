@@ -1,8 +1,10 @@
-namespace OOP_Lab.Classes;
+namespace Models;
 
 public class Author
 {
     public int AuthorId {get; set; }
     public string Name { get; set; }
-    
+    public string? Description { get; set; }
+
+    public List<Song>? Songs = new();
 }

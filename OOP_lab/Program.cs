@@ -7,6 +7,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 builder.Services.AddDbContext<SongsDbContext>(x => x.UseNpgsql(builder.Configuration.GetConnectionString("Postgres")));
 
 var app = builder.Build();
