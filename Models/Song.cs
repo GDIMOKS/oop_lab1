@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
@@ -5,7 +6,9 @@ namespace Models
     public class Song
     {
         public int SongId { get; set; }
+        
         public string Name { get; set; }
+        
         public int Duration { get; set; }
         
         public int AuthorId { get; set; }

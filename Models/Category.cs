@@ -13,5 +13,6 @@ public class Category
     [ForeignKey("SongsId")]
     public List<Song> Songs { get; set; } = new();
     public List<Category> Categories { get; set; } = new();
+    public List<Collection> Collections { get; set; } = new();
 
 }

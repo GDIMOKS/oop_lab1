@@ -1,9 +1,9 @@
 using DataAccess;
-using Microsoft.EntityFrameworkCore;
-using Models;
-using Services.Dtos;
+using Services.Category.Dtos;
+using Services.Song;
+using Services.Song.Dtos;
 
-namespace Services;
+namespace Services.Category;
 
 public class CategoryService : ICategoryService
 {
@@ -16,7 +16,7 @@ public class CategoryService : ICategoryService
 
     public void AddCategory(string name, int? parentId)
     {
-        var category = new Category() { Name = name, ParentCategoryId = parentId };
+        var category = new Models.Category() { Name = name, ParentCategoryId = parentId };
 
         _dbContext.Categories.Add(category);
         _dbContext.SaveChanges();
@@ -36,10 +36,15 @@ public class CategoryService : ICategoryService
         return false;
     }
 
-    public CategoryDto GetCategory(int id)
+    public CategoryDto? GetCategory(int id)
     {
         var category = _dbContext.Categories.FirstOrDefault(x => x.CategoryId == id);
-        return new CategoryDto() {CategoryId = category?.CategoryId, Name = category?.Name, ParentCategoryId = category?.ParentCategoryId};
+        return (category != null) ? new CategoryDto()
+        {
+            CategoryId = category.CategoryId, 
+            Name = category.Name, 
+            ParentCategoryId = category?.ParentCategoryId
+        } : null;
     }
 
     public List<CategoryDto> GetCategories()
@@ -71,4 +76,13 @@ public class CategoryService : ICategoryService
         }
         return false;
     }
+
+    public List<SongDto> GetSongs(int id)
+    {
+        var category = _dbContext.Categories.FirstOrDefault(x => x.CategoryId == id);
+        return category.Songs
+            .Select(x => new SongDto() { SongId = x.SongId, Name = x.Name, Duration = x.Duration, AuthorId = x.AuthorId, AlbumId = x.AlbumId})
+            .ToList<SongDto>();
+    }
+
 }

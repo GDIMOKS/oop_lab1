@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Models;
 
 public class Author
@@ -7,4 +9,5 @@ public class Author
     public string? Description { get; set; }
 
     public List<Song>? Songs = new();
+    public List<Album>? Albums = new();
 }

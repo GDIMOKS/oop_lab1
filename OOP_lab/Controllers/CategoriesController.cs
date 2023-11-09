@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
-using Services;
-using Models;
-using Services.Dtos;
+using Services.Category;
+using Services.Category.Dtos;
+using Services.Song.Dtos;
 
 namespace OOP_Lab.Controllers;
 
-[Route("api/[controller]/[action]")]
+[Route("api/[controller]")]
 [ApiController]
 public class CategoriesController : ControllerBase
 {
@@ -16,6 +16,7 @@ public class CategoriesController : ControllerBase
         _categoryService = categoryService;
     }
 
+    
     [HttpGet]
     public IEnumerable<CategoryDto> GetCategories()
     {
@@ -23,17 +24,22 @@ public class CategoriesController : ControllerBase
     }
     
     [HttpGet("{id}")]
-    public CategoryDto GetCategory([FromRoute]int id)
+    public IActionResult GetCategory([FromRoute]int id)
     {
-        return _categoryService.GetCategory(id);
+        var category = _categoryService.GetCategory(id);
+        return (category != null) ? Ok(category) : NotFound();
     }
-
-    [HttpGet("{id}")]
+    [HttpGet("{id}/[controller]")]
     public IEnumerable<CategoryDto> GetCategories([FromRoute] int id)
     {
         return _categoryService.GetCategories(id);
     }
 
+    [HttpGet("{id}/[action]")]
+    public IEnumerable<SongDto> GetCategorySongs([FromRoute] int id)
+    {
+        return _categoryService.GetSongs(id);
+    }
     [HttpPost]
     public void AddCategory([FromBody]CreateCategoryDto dto)
     {
