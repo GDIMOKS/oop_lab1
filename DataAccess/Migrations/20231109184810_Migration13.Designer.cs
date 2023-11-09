@@ -3,6 +3,7 @@ using System;
 using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AudioserviceDbContext))]
-    partial class SongsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231109184810_Migration13")]
+    partial class Migration13
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,16 +134,11 @@ namespace DataAccess.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CollectionId"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("CollectionId");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Collections");
                 });
@@ -225,17 +223,6 @@ namespace DataAccess.Migrations
                     b.Navigation("ParentCategory");
                 });
 
-            modelBuilder.Entity("Models.Collection", b =>
-                {
-                    b.HasOne("Models.Category", "Category")
-                        .WithMany("Collections")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
             modelBuilder.Entity("Models.Song", b =>
                 {
                     b.HasOne("Models.Album", "Album")
@@ -258,8 +245,6 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Models.Category", b =>
                 {
                     b.Navigation("Categories");
-
-                    b.Navigation("Collections");
                 });
 #pragma warning restore 612, 618
         }

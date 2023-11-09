@@ -3,6 +3,7 @@ using System;
 using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AudioserviceDbContext))]
-    partial class SongsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231109150001_Migration10")]
+    partial class Migration10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,19 +63,14 @@ namespace DataAccess.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AlbumId"));
 
-                    b.Property<int>("AuthorId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("ReleaseDate")
-                        .HasColumnType("integer");
+                    b.Property<DateOnly>("ReleaseDate")
+                        .HasColumnType("date");
 
                     b.HasKey("AlbumId");
-
-                    b.HasIndex("AuthorId");
 
                     b.ToTable("Albums");
                 });
@@ -94,8 +92,6 @@ namespace DataAccess.Migrations
 
                     b.HasKey("AuthorId");
 
-                    b.HasAlternateKey("Name");
-
                     b.ToTable("Authors");
                 });
 
@@ -116,8 +112,6 @@ namespace DataAccess.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.HasAlternateKey("Name");
-
                     b.HasIndex("ParentCategoryId");
 
                     b.ToTable("Categories");
@@ -131,16 +125,11 @@ namespace DataAccess.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CollectionId"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("CollectionId");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Collections");
                 });
@@ -205,17 +194,6 @@ namespace DataAccess.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Models.Album", b =>
-                {
-                    b.HasOne("Models.Author", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Author");
-                });
-
             modelBuilder.Entity("Models.Category", b =>
                 {
                     b.HasOne("Models.Category", "ParentCategory")
@@ -223,17 +201,6 @@ namespace DataAccess.Migrations
                         .HasForeignKey("ParentCategoryId");
 
                     b.Navigation("ParentCategory");
-                });
-
-            modelBuilder.Entity("Models.Collection", b =>
-                {
-                    b.HasOne("Models.Category", "Category")
-                        .WithMany("Collections")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Models.Song", b =>
@@ -258,8 +225,6 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Models.Category", b =>
                 {
                     b.Navigation("Categories");
-
-                    b.Navigation("Collections");
                 });
 #pragma warning restore 612, 618
         }
