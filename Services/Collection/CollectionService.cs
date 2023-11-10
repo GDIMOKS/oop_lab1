@@ -37,9 +37,11 @@ public class CollectionService : ICollectionService
     public void AddSongToCollection(int collectionId, int songId)
     {
         var collection = _dbContext.Collections.FirstOrDefault(c => c.CollectionId == collectionId);
-        var song = _dbContext.Songs.FirstOrDefault(s => s.SongId == songId);
+        var song = _dbContext.Songs.Include(song => song.Categories).FirstOrDefault(s => s.SongId == songId);
         
-        if (collection != null && song != null)
+        if (collection != null 
+            && song != null 
+            && song.Categories.FirstOrDefault(x => x.CategoryId == collection.CategoryId) != null)
         {
             collection.Songs.Add(song);
             _dbContext.SaveChanges();

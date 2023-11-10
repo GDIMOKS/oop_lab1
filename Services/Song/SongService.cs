@@ -33,9 +33,14 @@ public class SongService : ISongService
 
     public void AddSong(string name, int duration, int authorId, int albumId)
     {
+        var album = _dbContext.Albums.FirstOrDefault(x => x.AlbumId == albumId);
+        if (album == null) return;
+        if (album.AuthorId != authorId) return;
+        
         var song = new Models.Song() {Name = name, Duration = duration, AuthorId = authorId, AlbumId = albumId};
         _dbContext.Songs.Add(song);
         _dbContext.SaveChanges();
+
     }
 
     public void AddCategoryToSong(int songId, int categoryId)
@@ -184,8 +189,14 @@ public class SongService : ISongService
     
     public bool UpdateSong(int id, string name, int duration, int authorId, int albumId)
     {
+        var album = _dbContext.Albums.FirstOrDefault(x => x.AlbumId == albumId);
+        
+        if (album == null) return false;
+        if (album.AuthorId != authorId) return false;
+        
         var song = _dbContext.Songs.FirstOrDefault(x => x.SongId == id);
-
+        
+        
         if (song != null)
         {
             song.Name = name;
