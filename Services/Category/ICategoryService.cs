@@ -1,4 +1,5 @@
 using Services.Category.Dtos;
+using Services.Collection.Dtos;
 using Services.Song;
 using Services.Song.Dtos;
 
@@ -11,6 +12,7 @@ public interface ICategoryService
     List<CategoryDto> GetCategories();
     List<CategoryDto> GetCategories(int id);
     List<SongDto> GetSongs(int id);
+    List<CollectionDto> GetCollections(int id);
     bool UpdateCategory(int id, string name, int? parentId);
 }
     

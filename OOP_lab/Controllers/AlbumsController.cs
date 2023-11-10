@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Services.Album;
 using Services.Album.Dtos;
+using Services.Song.Dtos;
 
 namespace OOP_Lab.Controllers;
 
@@ -15,6 +16,12 @@ public class AlbumsController : ControllerBase
         _albumService = albumService;
     }
     
+    [HttpGet("[action]/{name}")]
+    public IEnumerable<AlbumDto> GetAlbums([FromRoute]string name)
+    {
+        return _albumService.GetAlbums(name.Trim());
+    }
+    
     [HttpGet]
     public IEnumerable<AlbumDto> GetAlbums()
     {
@@ -26,6 +33,12 @@ public class AlbumsController : ControllerBase
     {
         var album = _albumService.GetAlbum(id);
         return (album != null) ? Ok(album) : NotFound();
+    }
+
+    [HttpGet("{id}/Songs")]
+    public IEnumerable<SongDto> GetSongsFromAlbum([FromRoute]int id)
+    {
+        return _albumService.GetSongs(id);
     }
 
     [HttpPost]

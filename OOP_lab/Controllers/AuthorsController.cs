@@ -15,7 +15,11 @@ public class AuthorsController : ControllerBase
     {
         _authorService = authorService;
     }
-    
+    [HttpGet("[action]/{name}")]
+    public IEnumerable<AuthorDto> GetAuthors([FromRoute]string name)
+    {
+        return _authorService.GetAuthors(name.Trim());
+    }
     [HttpGet]
     public IEnumerable<AuthorDto> GetAuthors()
     {
@@ -26,6 +30,20 @@ public class AuthorsController : ControllerBase
     public IActionResult GetAuthor([FromRoute]int id)
     {
         var author = _authorService.GetAuthor(id);
+        return (author != null) ? Ok(author) : NotFound();
+    }
+    
+    [HttpGet("{id}/Songs")]
+    public IActionResult GetAuthorSongs([FromRoute]int id)
+    {
+        var author = _authorService.GetSongs(id);
+        return (author != null) ? Ok(author) : NotFound();
+    }
+    
+    [HttpGet("{id}/Albums")]
+    public IActionResult GetAuthorAlbums([FromRoute]int id)
+    {
+        var author = _authorService.GetAlbums(id);
         return (author != null) ? Ok(author) : NotFound();
     }
 

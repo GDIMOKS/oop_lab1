@@ -28,5 +28,11 @@ namespace DataAccess
                 optionsBuilder.UseNpgsql("User ID=postgres;Password=postgres;Host=localhost;Port=5432;Database=oop;");
             }
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Author>().HasAlternateKey(a => a.Name);
+            modelBuilder.Entity<Category>().HasAlternateKey(c => c.Name);
+
+        }
     } 
 }

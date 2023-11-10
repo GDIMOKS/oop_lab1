@@ -1,5 +1,6 @@
 using DataAccess;
 using Services.Album.Dtos;
+using Services.Song.Dtos;
 
 namespace Services.Album;
 
@@ -11,7 +12,19 @@ public class AlbumService : IAlbumService
     {
         _dbContext = dbContext;
     }
-
+    public List<AlbumDto> GetAlbums(string name)
+    {
+       return _dbContext.Albums
+           .Where(x => x.Name.ToLower().Contains(name.ToLower()))
+           .Select(x => new AlbumDto()
+           {
+               AlbumId = x.AlbumId, 
+               Name = x.Name, 
+               AuthorId = x.AuthorId,
+               ReleaseDate = x.ReleaseDate
+           })
+           .ToList<AlbumDto>();
+    }
     public void AddAlbum(string name, int authorId, int releaseDate)
     {
         var album = new Models.Album() {Name = name, AuthorId = authorId, ReleaseDate = releaseDate};
@@ -55,6 +68,21 @@ public class AlbumService : IAlbumService
                 ReleaseDate = x.ReleaseDate
             });
         return albums.ToList<AlbumDto>();
+    }
+
+    public List<SongDto> GetSongs(int id)
+    {
+        var songs = _dbContext.Songs
+            .Where(x => x.AlbumId == id)
+            .Select(x => new SongDto()
+            {
+                SongId = x.SongId,
+                Name = x.Name,
+                AlbumId = x.AlbumId,
+                AuthorId = x.AuthorId,
+                Duration = x.Duration
+            });
+        return songs.ToList<SongDto>();
     }
 
     public bool UpdateAlbum(int id, string name, int authorId, int releaseDate)

@@ -1,5 +1,8 @@
 using DataAccess;
+using Microsoft.EntityFrameworkCore;
+using Services.Album.Dtos;
 using Services.Author.Dtos;
+using Services.Song.Dtos;
 
 namespace Services.Author;
 
@@ -12,6 +15,19 @@ public class AuthorService : IAuthorService
         _dbContext = dbContext;
     }
 
+    public List<AuthorDto> GetAuthors(string name)
+    {
+        return _dbContext.Authors
+            .Where(x => x.Name.ToLower().Contains(name.ToLower()))
+            .Select(x => new AuthorDto()
+            {
+                AuthorId = x.AuthorId, 
+                Name = x.Name, 
+                Description = x.Description
+            })
+            .ToList<AuthorDto>();
+    }
+    
     public void AddAuthor(string name, string description)
     {
         var author = new Models.Author() {Name = name, Description = description ?? null};
@@ -44,6 +60,36 @@ public class AuthorService : IAuthorService
         } : null;
     }
 
+    public List<SongDto> GetSongs(int authorId)
+    {
+        var songs = _dbContext.Songs
+            .Where(x => x.AuthorId == authorId)
+            .Select(x => new SongDto()
+            {
+                SongId = x.SongId,
+                Name = x.Name,
+                Duration = x.Duration,
+                AuthorId = x.AuthorId
+            });
+
+        return songs.ToList<SongDto>();
+
+    }
+
+    public List<AlbumDto> GetAlbums(int authorId)
+    {
+        var albums = _dbContext.Albums
+            .Where(x => x.AuthorId == authorId)
+            .Select(x => new AlbumDto()
+            {
+                AlbumId = x.AlbumId,
+                Name = x.Name,
+                ReleaseDate = x.ReleaseDate,
+                AuthorId = x.AuthorId
+            });
+
+        return albums.ToList<AlbumDto>();
+    }
     public List<AuthorDto> GetAuthors()
     {
         var authors = _dbContext.Authors

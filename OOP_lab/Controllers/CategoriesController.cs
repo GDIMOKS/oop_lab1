@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Services.Category;
 using Services.Category.Dtos;
+using Services.Collection.Dtos;
 using Services.Song.Dtos;
 
 namespace OOP_Lab.Controllers;
@@ -35,10 +36,16 @@ public class CategoriesController : ControllerBase
         return _categoryService.GetCategories(id);
     }
 
-    [HttpGet("{id}/[action]")]
+    [HttpGet("{id}/Songs")]
     public IEnumerable<SongDto> GetCategorySongs([FromRoute] int id)
     {
         return _categoryService.GetSongs(id);
+    }
+    
+    [HttpGet("{id}/Collections")]
+    public IEnumerable<CollectionDto> GetCategoryCollections([FromRoute] int id)
+    {
+        return _categoryService.GetCollections(id);
     }
     [HttpPost]
     public void AddCategory([FromBody]CreateCategoryDto dto)

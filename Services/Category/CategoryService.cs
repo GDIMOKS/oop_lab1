@@ -1,5 +1,7 @@
 using DataAccess;
+using Microsoft.EntityFrameworkCore;
 using Services.Category.Dtos;
+using Services.Collection.Dtos;
 using Services.Song;
 using Services.Song.Dtos;
 
@@ -60,7 +62,42 @@ public class CategoryService : ICategoryService
             .Select(x => new CategoryDto() { CategoryId = x.CategoryId, Name = x.Name, ParentCategoryId = x.ParentCategoryId });
         return categories.ToList<CategoryDto>();
     }
+    public List<SongDto> GetSongs(int id)
+    {
+        var category = _dbContext.Categories
+            .Include(category => category.Songs)
+            .FirstOrDefault(x => x.CategoryId == id);
+        
+        if (category != null)
+        {
+            var songs = category.Songs
+                .Select(x => new SongDto()
+                {
+                    SongId = x.SongId,
+                    Name = x.Name,
+                    Duration = x.Duration,
+                    AuthorId = x.AuthorId,
+                    AlbumId = x.AlbumId
+                });
+            return songs.ToList<SongDto>();
+        }
 
+        return new List<SongDto>();
+    }
+
+    public List<CollectionDto> GetCollections(int id)
+    {
+        var collections = _dbContext.Collections
+            .Where(x => x.CategoryId == id)
+            .Select(x => new CollectionDto()
+            {
+                CollectionId = x.CollectionId,
+                Name = x.Name,
+                CategoryId = x.CategoryId
+            });
+
+        return collections.ToList<CollectionDto>();
+    }
 
     public bool UpdateCategory(int id, string name, int? parentId)
     {
@@ -77,12 +114,5 @@ public class CategoryService : ICategoryService
         return false;
     }
 
-    public List<SongDto> GetSongs(int id)
-    {
-        var category = _dbContext.Categories.FirstOrDefault(x => x.CategoryId == id);
-        return category.Songs
-            .Select(x => new SongDto() { SongId = x.SongId, Name = x.Name, Duration = x.Duration, AuthorId = x.AuthorId, AlbumId = x.AlbumId})
-            .ToList<SongDto>();
-    }
 
 }
