@@ -3,6 +3,9 @@
 
 # Контроллеры для поиска
 поиск артистов по имени: /api/Authors/GetAuthors/{name}
+#
 поиск альбомов по имени: /api/Albums/GetAlbums/{name}
+#
 поиск сборников по имени: /api/Collections/GetCollections/{name}
+#
 поиск песен по ряду критериев по id категории: /api/Categories/{id}/Songs 
